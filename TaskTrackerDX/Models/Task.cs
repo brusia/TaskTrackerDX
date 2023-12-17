@@ -17,6 +17,7 @@ namespace TaskTrackerDX.Models
 
   public class Task : NotifyObject, ICloneable
   {
+    // sets automatically
     public long Id => _id;
     private long _id;
 
@@ -34,12 +35,14 @@ namespace TaskTrackerDX.Models
       get => _description;
       set { if (_description.Length != value.Length || !_description.Equals(value)) { _description = value; OnPropertyChanged(); } }
     }
-    private string _description;
+    private string _description = string.Empty;
 
+    // sets automatically
     public DateTime CreationTimeUtc => _creationTimeUtc;
     private DateTime _creationTimeUtc;
 
-    public DateTime ClosedTimeUtc => _closedTimeUtc;
+    // sets automatically
+    public string ClosedTimeUtc => _closedTimeUtc == DateTime.MinValue ? string.Empty : _closedTimeUtc.ToString();
     private DateTime _closedTimeUtc;
 
 

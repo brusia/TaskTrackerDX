@@ -30,7 +30,7 @@ namespace TaskTrackerDX.Models
       SelectedTask = task;
     }
 
-    public void DeleteSelected()
+    public void RemoveSelected()
     {
       if (_selectedTask == null) { return; }
 

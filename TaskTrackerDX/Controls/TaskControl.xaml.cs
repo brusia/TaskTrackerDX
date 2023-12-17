@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,21 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TaskTrackerDX.ViewModels;
 
-namespace TaskTrackerDX.Views
+namespace TaskTrackerDX.Controls
 {
-  /// <summary>
-  /// Interaction logic for View1.xaml
-  /// </summary>
-  public partial class MainView : UserControl
-  {
-    private MainViewModel _context = new MainViewModel();
-
-    public MainView()
+    /// <summary>
+    /// Interaction logic for TaskControl.xaml
+    /// </summary>
+    public partial class TaskControl : ItemsControl
     {
-      InitializeComponent();
-      DataContext = _context;
+        public TaskControl()
+        {
+            InitializeComponent();
+        }
     }
-  }
 }

@@ -1,17 +1,25 @@
-﻿using DevExpress.Mvvm.CodeGenerators;
+﻿using DevExpress.Data.Browsing;
+using DevExpress.Mvvm.CodeGenerators;
+using TaskTrackerDX.Models;
 
 namespace TaskTrackerDX.ViewModels
 {
-  [GenerateViewModel]
-  public partial class MainViewModel
+  public partial class MainViewModel : NotifyObject
   {
-    [GenerateProperty]
-    string _Status;
-    [GenerateProperty]
-    string _UserName;
+    //[GenerateProperty]
+    //string _Status;
+    //[GenerateProperty]
+    //string _UserName;
 
-    [GenerateCommand]
-    void Login() => Status = "User: " + UserName;
-    bool CanLogin() => !string.IsNullOrEmpty(UserName);
+    //[GenerateCommand]
+    //void Login() => Status = "User: " + UserName;
+    //bool CanLogin() => !string.IsNullOrEmpty(UserName);
+
+    public TaskEditViewModel TaskEditContext { get => _taskEditContext; set { _taskEditContext = value; OnPropertyChanged(); } }
+    private TaskEditViewModel _taskEditContext = new TaskEditViewModel();
+
+    public MainViewModel()
+    {
+    }
   }
 }

@@ -17,8 +17,8 @@ namespace TaskTrackerDX.Models
 
     public void StartEdit(Task taskToEdit)
     {
-      _startState = (Task)taskToEdit.Clone();
-      _currentTask = taskToEdit;
+      _startState = taskToEdit;
+      _currentTask = (Task)taskToEdit.Clone();
     }
 
     public void FinishEdit(bool saveChanges)
