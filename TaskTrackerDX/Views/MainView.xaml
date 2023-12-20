@@ -20,7 +20,11 @@
 									Height="32"
 									VerticalAlignment="Top"
 									DataContext="{Binding TaskEditContext}"/>
-		
+		<controls:SortFilterSettingControl HorizontalAlignment="Left"
+									Height="32"
+									VerticalAlignment="Top"
+								    DataContext="{Binding }"/>
+
 		<controls:TaskEditControl x:Name="TaskEditControl"
 								  DataContext="{Binding TaskEditContext}"
 								  Visibility="{Binding Visibility}"/>
