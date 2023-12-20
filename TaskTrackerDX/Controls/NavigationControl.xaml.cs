@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Xpf.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace TaskTrackerDX.Controls
   /// </summary>
   public partial class NavigationControl : UserControl
   {
-    private TaskEditViewModel _taskEditViewModel;
+    private TaskEditViewModel _context;
 
     public NavigationControl()
     {
@@ -31,28 +32,35 @@ namespace TaskTrackerDX.Controls
 
     private void AddButton_Click(object sender, RoutedEventArgs e)
     {
-      if (_taskEditViewModel == null) { InitContext(); }
-      _taskEditViewModel.TaskCollection.CreateTask();
+      if (_context == null) { InitContext(); }
+
+      _context?.CreateTask();
     }
 
     private void EditButton_Click(object sender, RoutedEventArgs e)
     {
-      if (_taskEditViewModel == null) { InitContext(); }
-      _taskEditViewModel.StartEdit();
+      if (_context == null) { InitContext(); }
+
+      _context?.StartEdit();
     }
 
     private void RemoveButton_Click(object sender, RoutedEventArgs e)
     {
-      if (_taskEditViewModel == null) { InitContext(); }
+      if (_context == null) { InitContext(); }
 
-      _taskEditViewModel.TaskCollection.RemoveSelected();
+      //check if it is edition mode (then not remove).
+
+      if (_context?.TaskCollection.SelectedTask != null && _context.AskQuestion("Do you want to delete selected item?"))
+      {
+        _context?.RemoveTask();
+      }
     }
 
     private void InitContext()
     {
       if (DataContext != null && DataContext is TaskEditViewModel viewModel)
       {
-        _taskEditViewModel = viewModel;
+        _context = viewModel;
       }
     }
   }

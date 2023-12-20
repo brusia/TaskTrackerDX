@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TaskTrackerDX.Models
 
@@ -17,7 +18,6 @@ namespace TaskTrackerDX.Models
 
   public class Task : NotifyObject, ICloneable
   {
-    // sets automatically
     public long Id => _id;
     private long _id;
 
@@ -42,27 +42,27 @@ namespace TaskTrackerDX.Models
     private DateTime _creationTimeUtc;
 
     // sets automatically
-    public string ClosedTimeUtc => _closedTimeUtc == DateTime.MinValue ? string.Empty : _closedTimeUtc.ToString();
+    public DateTime ClosedTimeUtc
+    {
+      get => _closedTimeUtc;
+      set { if (_closedTimeUtc != value) { { _closedTimeUtc = value; OnPropertyChanged(); } } }
+    }
     private DateTime _closedTimeUtc;
+
+    public Visibility ClosedTimeVisibility
+    { 
+      get => _closedTimeVisibility;
+      set { if (value != _closedTimeVisibility) { _closedTimeVisibility = value; OnPropertyChanged(); } }
+    }
+    private Visibility _closedTimeVisibility = Visibility.Hidden;
+
 
 
     // to think: if status is closed, is it allowed to open task again? Likely not.
     public TaskStatus Status
     {
       get => _status;
-      set
-      {
-        if (_status != value)
-        {
-          _status = value;
-          if (_status == TaskStatus.Closed)
-          {
-            _closedTimeUtc = DateTime.UtcNow;
-            OnPropertyChanged(nameof(ClosedTimeUtc));
-          }
-          OnPropertyChanged();
-        }
-      }
+      set { if (_status != value) { _status = value; OnPropertyChanged(); } }
     }
     private TaskStatus _status = TaskStatus.Pause;
 

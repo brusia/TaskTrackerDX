@@ -4,17 +4,30 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+			  xmlns:converters="clr-namespace:TaskTrackerDX.Converters"
     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
     xmlns:ViewModels="clr-namespace:TaskTrackerDX.ViewModels"
 			  xmlns:controls="clr-namespace:TaskTrackerDX.Controls"
+			  d:DataContext="{d:DesignInstance Type=ViewModels:MainViewModel}"
 			  mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
 
-	<UserControl.DataContext>
-		<ViewModels:MainViewModel/>
-	</UserControl.DataContext>
+	<UserControl.Resources>
+		<converters:TestConverter x:Key="TestConverter"/>
+	</UserControl.Resources>
 	
-	<dxlc:LayoutControl>
-		<controls:NavigationControl HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" DataContext="{Binding TaskEditContext}"/>
-		<controls:TaskControl x:Name="TaskControl" ItemsSource="{Binding TaskEditContext.TaskCollection}"/>
+	<dxlc:LayoutControl Orientation="Vertical" ScrollBars="Auto">
+		<controls:NavigationControl HorizontalAlignment="Left"
+									Height="32"
+									VerticalAlignment="Top"
+									DataContext="{Binding TaskEditContext}"/>
+		
+		<controls:TaskEditControl x:Name="TaskEditControl"
+								  DataContext="{Binding TaskEditContext}"
+								  Visibility="{Binding Visibility}"/>
+
+		<controls:TaskControl x:Name="TaskControl"
+							  ItemsSource="{Binding TaskEditContext.TaskCollection}"
+							  Visibility="{Binding TaskEditContext.CollectionVisibility}"
+							  SelectedItem="{Binding TaskEditContext.TaskCollection.SelectedTask}"/>
 	</dxlc:LayoutControl>
 </UserControl>

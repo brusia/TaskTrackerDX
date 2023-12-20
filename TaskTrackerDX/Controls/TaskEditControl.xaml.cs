@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,20 +16,20 @@ using TaskTrackerDX.ViewModels;
 namespace TaskTrackerDX.Controls
 {
   /// <summary>
-  /// Interaction logic for TaskControl.xaml
+  /// Interaction logic for TaskEditControl.xaml
   /// </summary>
-  public partial class TaskControl : ListBox
+  public partial class TaskEditControl : UserControl
   {
-    public TaskControl()
+    public TaskEditControl()
     {
       InitializeComponent();
     }
 
-    private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+    private void CloseButton_Click(object sender, RoutedEventArgs e)
     {
-      var context = DataContext as MainViewModel;
+      var context = DataContext as TaskEditViewModel;
 
-      context?.TaskEditContext.StartEdit();
+      context?.FinishEditing();
     }
   }
 }
