@@ -10,9 +10,6 @@
 			 mc:Ignorable="d"
              d:DesignHeight="32" d:DesignWidth="300"
 			 d:DataContext="{d:DesignInstance viewModels:OrderingSettingsViewModel}">
-	<UserControl.Resources>
-		<converters:TestConverter x:Key="TestConverter"/>
-	</UserControl.Resources>
 
 	<dxp:RibbonControl>
 		<dxp:RibbonControlGroup>

@@ -12,10 +12,6 @@
 			  xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
 			  d:DataContext="{d:DesignInstance Type=ViewModels:MainViewModel}"
 			  mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
-
-	<UserControl.Resources>
-		<converters:TestConverter x:Key="TestConverter"/>
-	</UserControl.Resources>
 	
 	<dxlc:LayoutControl Orientation="Vertical" ScrollBars="Auto">
 		<dxc:DXTabControl Height="85">
