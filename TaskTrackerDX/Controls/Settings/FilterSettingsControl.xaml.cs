@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace TaskTrackerDX.Controls
 {
   /// <summary>
-  /// Interaction logic for SortFilterSettingControl.xaml
+  /// Interaction logic for FilterSettingsControl.xaml
   /// </summary>
-  public partial class SortFilterSettingControl : UserControl
+  public partial class FilterSettingsControl : UserControl
   {
-    public SortFilterSettingControl()
+    public FilterSettingsControl()
     {
       InitializeComponent();
     }

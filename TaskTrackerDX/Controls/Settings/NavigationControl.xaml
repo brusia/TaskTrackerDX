@@ -11,9 +11,9 @@
              d:DesignHeight="32" d:DesignWidth="100">
 	<dxp:RibbonControl>
 		<dxp:RibbonControlGroup>
-			<dx:SimpleButton x:Name="AddButton" Glyph="{dx:DXImage 'GrayScaleImages/Actions/Add_32x32.png'}" Click="AddButton_Click"/>
-			<dx:SimpleButton x:Name="EditButton" Glyph="{dx:DXImage 'GrayScaleImages/Edit/Edit_32x32.png'}" Click="EditButton_Click"/>
-			<dx:SimpleButton x:Name="RemoveButton" Glyph="{dx:DXImage 'GrayScaleImages/Actions/Delete_32x32.png'}" Click="RemoveButton_Click"/>
+			<dx:SimpleButton x:Name="AddButton" Glyph="{dx:DXImage 'GrayScaleImages/Actions/Add_32x32.png'}" Click="AddButton_Click" Margin="1"/>
+			<dx:SimpleButton x:Name="EditButton" Glyph="{dx:DXImage 'GrayScaleImages/Edit/Edit_32x32.png'}" Click="EditButton_Click" Margin="1"/>
+			<dx:SimpleButton x:Name="RemoveButton" Glyph="{dx:DXImage 'GrayScaleImages/Actions/Delete_32x32.png'}" Click="RemoveButton_Click" Margin="1"/>
 		</dxp:RibbonControlGroup>
 	</dxp:RibbonControl>
 </UserControl>
